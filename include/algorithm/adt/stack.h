@@ -1,0 +1,1 @@
+../../../submodules/algorithm/src/adt/stack.h

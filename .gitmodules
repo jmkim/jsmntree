@@ -1,0 +1,7 @@
+[submodule "submodules/jsmn"]
+	path = submodules/jsmn
+	url = git@github.com:zserge/jsmn.git
+[submodule "submodules/algorithm"]
+	path = submodules/algorithm
+	url = git@github.com:kdzlvaids/algorithm.git
+	branch = develop/container
