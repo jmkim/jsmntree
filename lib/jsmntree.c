@@ -46,7 +46,7 @@ jsmntree_alloc(const jsmntreetype_t type, const size_t max_size)
         ret = malloc(sizeof(int) * max_size);
         break;
 
-    defualt:
+    default:
         ret = NULL;
         break;
     }
