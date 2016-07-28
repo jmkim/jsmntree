@@ -72,13 +72,13 @@ jsmntree_element;
 /**
  * An object, which is an unordered set of name/value pairs.
  * @param       size        Size of array `members'
- * @param       max_size    Max size of array `members'
+ * @param       capacity    Allocated memory size of array `members'
  * @param       members     Array of name/value pair
  */
 typedef struct
 {
     size_t              size;
-    size_t              max_size;
+    size_t              capacity;
     jsmntree_member **  members;
 }
 jsmntree_object;
@@ -86,13 +86,13 @@ jsmntree_object;
 /**
  * An array, which is an ordered collection of values.
  * @param       size        Size of array `elements'
- * @param       max_size    Max size of array `elements'
+ * @param       capacity    Allocated memory size of array `elements'
  * @param       elements    Array of value
  */
 typedef struct
 {
     size_t              size;
-    size_t              max_size;
+    size_t              capacity;
     jsmntree_element ** elements;
 }
 jsmntree_array;

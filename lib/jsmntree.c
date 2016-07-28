@@ -7,43 +7,43 @@
 #include "algorithm/adt/stack.h"
 
 static void *
-jsmntree_alloc(const jsmntreetype_t type, const size_t max_size)
+jsmntree_alloc(const jsmntreetype_t type, const size_t capacity)
 {
     void * ret = NULL;
 
     switch(type)
     {
     case JSMNTREE_OBJECT:
-        ret = malloc(sizeof(jsmntree_object) * max_size);
+        ret = malloc(sizeof(jsmntree_object) * capacity);
         break;
 
     case JSMNTREE_ARRAY:
-        ret = malloc(sizeof(jsmntree_array) * max_size);
+        ret = malloc(sizeof(jsmntree_array) * capacity);
         break;
 
     case JSMNTREE_MEMBER:
-        ret = malloc(sizeof(jsmntree_member) * max_size);
+        ret = malloc(sizeof(jsmntree_member) * capacity);
         break;
 
     case JSMNTREE_ELEMENT:
-        ret = malloc(sizeof(jsmntree_element) * max_size);
+        ret = malloc(sizeof(jsmntree_element) * capacity);
         break;
 
     case JSMNTREE_MEMBER_ARRAY:
-        ret = malloc(sizeof(jsmntree_member *) * max_size);
+        ret = malloc(sizeof(jsmntree_member *) * capacity);
         break;
 
     case JSMNTREE_ELEMENT_ARRAY:
-        ret = malloc(sizeof(jsmntree_element *) * max_size);
+        ret = malloc(sizeof(jsmntree_element *) * capacity);
         break;
 
     case JSMNTREE_STRING:
-        ret = malloc(sizeof(char) * max_size);
+        ret = malloc(sizeof(char) * capacity);
         break;
 
     case JSMNTREE_NUMBER:
     case JSMNTREE_BOOLEAN:
-        ret = malloc(sizeof(int) * max_size);
+        ret = malloc(sizeof(int) * capacity);
         break;
 
     default:
@@ -62,45 +62,45 @@ jsmntree_dealloc(void * container)
 }
 
 static void *
-jsmntree_init(void * ptr, const jsmntreetype_t type, const size_t max_size)
+jsmntree_init(void * ptr, const jsmntreetype_t type, const size_t capacity)
 {
     switch(type)
     {
     case JSMNTREE_OBJECT:
-        memset(ptr, 0, sizeof(jsmntree_object) * max_size);
+        memset(ptr, 0, sizeof(jsmntree_object) * capacity);
         ((jsmntree_object *)ptr)->size      = 0;
-        ((jsmntree_object *)ptr)->max_size  = max_size;
+        ((jsmntree_object *)ptr)->capacity  = capacity;
         break;
 
     case JSMNTREE_ARRAY:
-        memset(ptr, 0, sizeof(jsmntree_array) * max_size);
+        memset(ptr, 0, sizeof(jsmntree_array) * capacity);
         ((jsmntree_array *)ptr)->size       = 0;
-        ((jsmntree_array *)ptr)->max_size   = max_size;
+        ((jsmntree_array *)ptr)->capacity   = capacity;
         break;
 
     case JSMNTREE_MEMBER:
-        memset(ptr, 0, sizeof(jsmntree_member) * max_size);
+        memset(ptr, 0, sizeof(jsmntree_member) * capacity);
         break;
 
     case JSMNTREE_ELEMENT:
-        memset(ptr, 0, sizeof(jsmntree_element) * max_size);
+        memset(ptr, 0, sizeof(jsmntree_element) * capacity);
         break;
 
     case JSMNTREE_MEMBER_ARRAY:
-        memset(ptr, 0, sizeof(jsmntree_member *) * max_size);
+        memset(ptr, 0, sizeof(jsmntree_member *) * capacity);
         break;
 
     case JSMNTREE_ELEMENT_ARRAY:
-        memset(ptr, 0, sizeof(jsmntree_element *) * max_size);
+        memset(ptr, 0, sizeof(jsmntree_element *) * capacity);
         break;
 
     case JSMNTREE_STRING:
-        memset(ptr, 0, sizeof(char) * max_size);
+        memset(ptr, 0, sizeof(char) * capacity);
         break;
 
     case JSMNTREE_NUMBER:
     case JSMNTREE_BOOLEAN:
-        memset(ptr, 0, sizeof(int) * max_size);
+        memset(ptr, 0, sizeof(int) * capacity);
         break;
     }
 
